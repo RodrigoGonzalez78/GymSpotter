@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+
 }
 
 kotlin {
@@ -33,7 +34,7 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
-            implementation("androidx.activity:activity-compose:1.7.2")
+            implementation("androidx.activity:activity-compose:1.10.1")
             implementation("com.squareup.sqldelight:android-driver:1.5.5")
             implementation("io.insert-koin:koin-android:3.4.0")
         }
@@ -47,7 +48,7 @@ kotlin {
             implementation(compose.materialIconsExtended)
 
             // Koin for dependency injection
-            implementation("io.insert-koin:koin-core:3.4.0")
+            implementation("io.insert-koin:koin-core:3.4.3")
             implementation("io.insert-koin:koin-compose:1.0.4")
 
             // SQLDelight
@@ -100,6 +101,18 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.material3.android)
+    implementation(libs.androidx.navigation.runtime.android)
+    implementation(libs.identity.jvm)
     debugImplementation(compose.uiTooling)
+}
+sqldelight {
+    databases {
+        create("Database") {
+            packageName.set("com.gymtracker")
+            schemaOutputDirectory.set(file("src/commonMain/sqldelight/databases"))
+            verifyMigrations.set(true)
+        }
+    }
 }
 
