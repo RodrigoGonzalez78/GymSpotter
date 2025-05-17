@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-
+    alias(libs.plugins.sqldelight)
 }
 
 kotlin {
@@ -35,8 +35,9 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
             implementation("androidx.activity:activity-compose:1.10.1")
-            implementation("com.squareup.sqldelight:android-driver:1.5.5")
-            implementation("io.insert-koin:koin-android:3.4.0")
+            implementation(libs.android.driver)
+            implementation(libs.koin.android)
+            implementation(libs.koin.androidx.compose)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -48,27 +49,24 @@ kotlin {
             implementation(compose.materialIconsExtended)
 
             // Koin for dependency injection
-            implementation("io.insert-koin:koin-core:3.4.3")
-            implementation("io.insert-koin:koin-compose:1.0.4")
+            implementation(libs.koin.core)
 
             // SQLDelight
-            implementation("com.squareup.sqldelight:runtime:1.5.5")
-            implementation("com.squareup.sqldelight:coroutines-extensions:1.5.5")
+            implementation(libs.runtime)
 
             // Kotlinx libraries
             implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
             implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
 
             // Navigation
-            implementation("moe.tlaster:precompose:1.5.0")
-            implementation("moe.tlaster:precompose-viewmodel:1.5.0")
+            implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.0-beta01")
 
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
         }
         iosMain.dependencies {
-            implementation("com.squareup.sqldelight:native-driver:1.5.5")
+            implementation(libs.native.driver)
         }
     }
 }
@@ -106,13 +104,13 @@ dependencies {
     implementation(libs.identity.jvm)
     debugImplementation(compose.uiTooling)
 }
+
 sqldelight {
     databases {
         create("Database") {
-            packageName.set("com.gymtracker")
+            packageName.set("com.gymspotter")
             schemaOutputDirectory.set(file("src/commonMain/sqldelight/databases"))
             verifyMigrations.set(true)
         }
     }
 }
-

@@ -12,8 +12,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.gymtracker.domain.entities.Profile
-import com.gymtracker.presentation.viewmodels.ProfileViewModel
+import org.example.project.domain.models.Profile
+import org.example.project.presentation.viewModels.ProfileViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

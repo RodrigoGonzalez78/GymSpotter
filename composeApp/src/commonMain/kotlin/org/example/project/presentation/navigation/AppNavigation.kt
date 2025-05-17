@@ -1,18 +1,14 @@
 package org.example.project.presentation.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.gymtracker.presentation.screens.HomeScreen
-import com.gymtracker.presentation.screens.ProfileScreen
-import com.gymtracker.presentation.screens.WorkoutScreen
-import com.gymtracker.presentation.screens.LoggingScreen
-import com.gymtracker.presentation.screens.NutritionScreen
-import moe.tlaster.precompose.navigation.NavHost
-import org.koin.compose.koinViewModel
+import org.example.project.presentation.screens.HomeScreen
+import org.example.project.presentation.screens.LoggingScreen
+import org.example.project.presentation.screens.NutritionScreen
+import org.example.project.presentation.screens.ProfileScreen
+import org.example.project.presentation.screens.WorkoutScreen
 
 @Composable
 fun AppNavigation() {
@@ -24,12 +20,12 @@ fun AppNavigation() {
         }
         composable("profiles") {
             ProfileScreen(
-                viewModel = koinViewModel(),
+                viewModel = koin,
                 navController = navController
             )
         }
         composable("workouts/{profileId}") { backStackEntry ->
-            val profileId = backStackEntry.arguments?.getString("profileId") ?: ""
+            val profileId = backStackEntry.arguments?.getString ("profileId") ?: ""
             WorkoutScreen(
                 profileId = profileId,
                 viewModel = koinViewModel(),

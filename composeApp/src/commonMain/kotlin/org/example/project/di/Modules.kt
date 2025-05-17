@@ -1,6 +1,8 @@
 package org.example.project.di
 
 import org.example.project.data.datasources.ProfileDataSource
+import org.example.project.data.datasources.SQLDelightProfileDataSource
+import org.example.project.data.repositores.ProfileRepositoryImpl
 import org.example.project.domain.repositorios.ProfileRepository
 import org.example.project.domain.usecases.CreateProfileUseCase
 import org.example.project.domain.usecases.DeleteProfileUseCase

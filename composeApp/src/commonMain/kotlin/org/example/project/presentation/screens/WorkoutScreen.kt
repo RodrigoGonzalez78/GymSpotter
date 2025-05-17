@@ -12,8 +12,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.gymtracker.domain.entities.Workout
 import com.gymtracker.presentation.viewmodels.WorkoutViewModel
+import org.example.project.domain.models.Workout
+import org.example.project.presentation.viewModels.WorkoutViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
